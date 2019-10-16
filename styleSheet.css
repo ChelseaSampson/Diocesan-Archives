@@ -1,41 +1,79 @@
-/* Style the body */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #ffffff; 
+  background-size: cover;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a:hover, a:active {
+    background-color: #e6e6e6;
+}
+
 /* Style the header */
-header {
-  background-color: #003895;
-  height: 100px;
-  color: white;
+.header {
+  grid-area: header;
+  background-color: #013f7a;
 }
 
-/* Create two columns/boxes that floats next to each other */
-nav {
-  float: left;
-  width: 100px;
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+    'header header header header header header header header' 
+    'left middle middle middle middle middle middle right' 
+    'footer footer footer footer footer footer footer footer';
+    background-color: #ffffff;
+} 
+
+.left,
+.right {
+  padding: 10px;
   height: 500px;
-  background: #ccc;
+  margin: auto;
 }
 
-article {
-  float: left;
-  width: 1000px;
-  height: 500px;
-  background-color: #f1f1f1;
+.middle {
+    padding: 10px;
+    height: 500px;
 }
 
-/* Clear floats after the columns */
-section:after {
-  content: "";
-  display: table;
-  clear: both;
+/* Style the left column */
+.left {
+  grid-area: left;
+  padding-top: 200px;
 }
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+/* Style the middle column */
+.middle {
+  grid-area: middle;
+}
+
+/* Style the right column */
+.right {
+  grid-area: right;
+  padding-top: 200px;
+}
+
+/* Style the footer */
+.footer {
+  grid-area: footer;
+  background-color: #013f7a;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
+  .grid-container  {
+    grid-template-areas: 
+      'header header header header header header' 
+      'left left left left left left' 
+      'middle middle middle middle middle middle' 
+      'right right right right right right' 
+      'footer footer footer footer footer footer';
   }
 }
